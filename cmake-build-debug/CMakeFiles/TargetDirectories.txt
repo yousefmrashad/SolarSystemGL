@@ -1,0 +1,3 @@
+C:/Users/youse/CLionProjects/SolarSystemModel/cmake-build-debug/CMakeFiles/SolarSystemModel.dir
+C:/Users/youse/CLionProjects/SolarSystemModel/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/youse/CLionProjects/SolarSystemModel/cmake-build-debug/CMakeFiles/rebuild_cache.dir
