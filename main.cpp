@@ -163,6 +163,8 @@ void drawCelestialBodies() {
 
     // Earth landmasses (drawn on top of the planet)
     glBegin(GL_POLYGON);
+
+    // Green
     glColor3ub(125, 223, 63);
     // Draw the polygon's outside curve tracing the curvature of the Earth
     for (int i = 200; i <= 260; i++) {
