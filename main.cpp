@@ -117,7 +117,8 @@ void drawCelestialBodies() {
 
     // Sun halo
     glBegin(GL_POLYGON);
-    glColor3ub(255, 235, 150);
+    // Same as Sun color, but with 50% transparency
+    glColor4f(1, 0.8, 0.098,0.5);
     for (int i = 0; i <= 360; i++) {
         theta = i * 3.142 / 180;
         glVertex2f(sun_r * cos(theta), sun_r * sin(theta)); // `sun_r` (halo radius) is updated every timer call
@@ -295,6 +296,10 @@ void init() {
 
     // Defining the coordinate system
     gluOrtho2D(-1900, 1900, -1900, 1900);
+
+    // Enable blending in order to achieve transparency
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 
@@ -317,6 +322,7 @@ int main(int argc, char **argv) {
     glutInitWindowSize(900, 900);
     glutInitWindowPosition(100, 0);
     glutCreateWindow("Solar System Model");
+
     init();
 
     // Assign display and keyboard callback functions
