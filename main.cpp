@@ -169,7 +169,7 @@ void drawCelestialBodies() {
         theta = i * 3.142 / 180;
         glVertex2f(80 * cos(theta) + earth_x, 80 * sin(theta) + earth_y);
     }
-    // Complete polygon as triangle with two points inside Earth
+    // Complete polygon with two points inside Earth
     // Negatives indicate the landmass is in the third quarter
     glVertex2f(-40 + earth_x, -10 + earth_y);
     glVertex2f(-20 + earth_x, -20 + earth_y);
