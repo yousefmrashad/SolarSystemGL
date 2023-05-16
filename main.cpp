@@ -148,7 +148,7 @@ void drawCelestialBodies() {
     }
     glEnd();
     glBegin(GL_POLYGON);
-    glColor3ub(37, 9, 50);
+    glColor3ub(0, 0, 0);
     for (int i = 0; i <= 360; i++) {
         theta = i * 3.142 / 180;
         glVertex2f(110 * cos(theta) + saturn_x, 50 * sin(theta) + saturn_y);
@@ -192,7 +192,7 @@ void display() {
 }
 
 void init() {
-    glClearColor(0.142, 0.0353, 0.196, 0.0);
+    glClearColor(0, 0, 0, 0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-1900, 1900, -1900, 1900);
