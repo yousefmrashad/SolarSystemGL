@@ -16,5 +16,14 @@ run
 ```
 
 ---
+<div class=”center”>
 
-[solar_system.webm](https://github.com/yousefmrashad/SolarSystemGL/assets/68995755/27f2135d-c8d2-428a-ae27-4fdec38c4f81)
+<video controls>
+
+<source src=”https://github.com/yousefmrashad/SolarSystemGL/assets/68995755/27f2135d-c8d2-428a-ae27-4fdec38c4f81” type=”video/webm” />
+
+</video>
+
+</div>
+
+<!-- [solar_system.webm]() -->
