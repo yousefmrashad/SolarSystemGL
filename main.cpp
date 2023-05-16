@@ -316,6 +316,8 @@ int main(int argc, char **argv) {
     glutInitWindowPosition(100, 0);
     glutCreateWindow("Solar System Model");
     init();
+
+    // Assign display and keyboard callback functions
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
 
