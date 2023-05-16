@@ -6,38 +6,41 @@
 
 double r, x, y, theta;
 double m = 0, v = 0, e = 0, mr = 0, j = 0, s = 0, u = 0, n = 0;
-double mercury_x = 200;
+double mercury_x = 400;
 double mercury_y = 0;
-double venus_x = 400;
+double venus_x = 600;
 double venus_y = 0;
-double earth_x = 600;
+double earth_x = 800;
 double earth_y = 0;
-double mars_x = 800;
+double mars_x = 1000;
 double mars_y = 0;
-double jupiter_x = 1000;
+double jupiter_x = 1200;
 double jupiter_y = 0;
-double saturn_x = 1200;
+double saturn_x = 1400;
 double saturn_y = 0;
-double uranus_x = 1400;
+double uranus_x = 1600;
 double uranus_y = 0;
-double neptune_x = 1600;
+double neptune_x = 1800;
 double neptune_y = 0;
+double zx[200];
+double zy[200];
 
 void timer(int);
 
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    //200 random star at each frame
+void drawStars() {
+    // Draw 200 random stars
     for (int z = 0; z <= 200; z++) {
-        int zx = rand() % 3400 - 1700;
-        int zy = rand() % 3400 - 1700;
         glPointSize(1.5);
         glBegin(GL_POINTS);
         glColor3ub(255, 255, 255);
-        glVertex2f(zx, zy);
+        glVertex2f(zx[z], zy[z]);
+        glEnd();
     }
-    r = 1600;
+}
+
+void drawOrbits(){
+    //draw orbits
+    r = 1800;
     for (int j = 0; j < 8; j++) {
         for (int i = 0; i <= 360; i++) {
             glPointSize(1.0f);
@@ -50,13 +53,15 @@ void display() {
         }
         r -= 200;
     }
+}
 
+void drawCelestialBodies() {
     //sun
     glBegin(GL_POLYGON);
     glColor3ub(254, 204, 25);
     for (int i = 0; i <= 360; i++) {
         theta = i * 3.142 / 180;
-        glVertex2f(80 * cos(theta), 80 * sin(theta));
+        glVertex2f(200 * cos(theta), 200 * sin(theta));
     }
     glEnd();
 
@@ -174,7 +179,14 @@ void display() {
         glVertex2f(80 * cos(theta) + neptune_x, 80 * sin(theta) + neptune_y);
     }
     glEnd();
+}
 
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    drawStars();
+    drawOrbits();
+    drawCelestialBodies();
 
     glutSwapBuffers();
 }
@@ -183,16 +195,19 @@ void init() {
     glClearColor(0.142, 0.0353, 0.196, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-1700, 1700, -1700, 1700);
+    gluOrtho2D(-1900, 1900, -1900, 1900);
 
 }
 
 
 int main(int argc, char **argv) {
-
+    for(int i = 0; i < 200; i++){
+        zx[i] = rand() % 3800 - 1900;
+        zy[i] = rand() % 3800 - 1900;
+    }
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(700, 700);
+    glutInitWindowSize(900, 900);
     glutInitWindowPosition(100, 0);
     glutCreateWindow("Solar System Model");
     init();
@@ -207,32 +222,32 @@ void timer(int) {
     glutTimerFunc(1000 / 60, timer, 0);
     if (n < 360) {
         theta = n * 3.142 / 180;
-        neptune_x = 1600 * cos(theta);
-        neptune_y = 1600 * sin(theta);
+        neptune_x = 1800 * cos(theta);
+        neptune_y = 1800 * sin(theta);
     }
     if (n >= 360) {
         n = 0;
     }
     if (u < 360) {
         theta = u * 3.142 / 180;
-        uranus_x = 1400 * cos(theta);
-        uranus_y = 1400 * sin(theta);
+        uranus_x = 1600 * cos(theta);
+        uranus_y = 1600 * sin(theta);
     }
     if (u >= 360) {
         u = 0;
     }
     if (s < 360) {
         theta = s * 3.142 / 180;
-        saturn_x = 1200 * cos(theta);
-        saturn_y = 1200 * sin(theta);
+        saturn_x = 1400 * cos(theta);
+        saturn_y = 1400 * sin(theta);
     }
     if (s >= 360) {
         s = 0;
     }
     if (j < 360) {
         theta = j * 3.142 / 180;
-        jupiter_x = 1000 * cos(theta);
-        jupiter_y = 1000 * sin(theta);
+        jupiter_x = 1200 * cos(theta);
+        jupiter_y = 1200 * sin(theta);
     }
     if (j >= 360) {
         j = 0;
@@ -240,8 +255,8 @@ void timer(int) {
 
     if (mr < 360) {
         theta = mr * 3.142 / 180;
-        mars_x = 800 * cos(theta);
-        mars_y = 800 * sin(theta);
+        mars_x = 1000 * cos(theta);
+        mars_y = 1000 * sin(theta);
     }
     if (mr >= 360) {
         mr = 0;
@@ -249,8 +264,8 @@ void timer(int) {
 
     if (e < 360) {
         theta = e * 3.142 / 180;
-        earth_x = 600 * cos(theta);
-        earth_y = 600 * sin(theta);
+        earth_x = 800 * cos(theta);
+        earth_y = 800 * sin(theta);
     }
     if (e >= 360) {
         e = 0;
@@ -258,8 +273,8 @@ void timer(int) {
 
     if (v < 360) {
         theta = v * 3.142 / 180;
-        venus_x = 400 * cos(theta);
-        venus_y = 400 * sin(theta);
+        venus_x = 600 * cos(theta);
+        venus_y = 600 * sin(theta);
     }
     if (v >= 360) {
         v = 0;
@@ -267,8 +282,8 @@ void timer(int) {
 
     if (m < 360) {
         theta = m * 3.142 / 180;
-        mercury_x = 200 * cos(theta);
-        mercury_y = 200 * sin(theta);
+        mercury_x = 400 * cos(theta);
+        mercury_y = 400 * sin(theta);
     }
     if (m >= 360) {
         m = 0;
