@@ -22,7 +22,7 @@ double uranus_x = 1600;
 double uranus_y = 0;
 double neptune_x = 1800;
 double neptune_y = 0;
-double sun_r = 200;
+double sun_r = 250;
 int sr = 1;
 
 double zx[200];
@@ -59,6 +59,7 @@ void drawOrbits(){
 }
 
 void drawCelestialBodies() {
+
     //sun halo
     glBegin(GL_POLYGON);
     glColor3ub(255, 255, 150);
@@ -73,7 +74,7 @@ void drawCelestialBodies() {
     glColor3ub(254, 204, 25);
     for (int i = 0; i <= 360; i++) {
         theta = i * 3.142 / 180;
-        glVertex2f(200 * cos(theta), 200 * sin(theta));
+        glVertex2f(250 * cos(theta), 250 * sin(theta));
     }
     glEnd();
 
@@ -232,11 +233,12 @@ int main(int argc, char **argv) {
 void timer(int) {
     glutPostRedisplay();
     glutTimerFunc(1000 / 60, timer, 0);
+
     sun_r += sr;
-    if (sun_r == 200){
+    if (sun_r == 250){
         sr = 1;
     }
-    if(sun_r == 250){
+    if(sun_r == 300){
         sr = -1;
     }
     if (n < 360) {
