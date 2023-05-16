@@ -15,7 +15,6 @@ run
 ./sul 
 ```
 
---- 
+---
 
-<video src="/solar_system.webm" controls="controls" style="max-width: 730px;">
-</video>
+[solar_system.webm](https://github.com/yousefmrashad/SolarSystemGL/assets/68995755/27f2135d-c8d2-428a-ae27-4fdec38c4f81)
