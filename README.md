@@ -17,5 +17,5 @@ run
 
 --- 
 
-<video src="/docs/solar_system.webm" controls="controls" style="max-width: 730px;">
+<video src="/solar_system.webm" controls="controls" style="max-width: 730px;">
 </video>
