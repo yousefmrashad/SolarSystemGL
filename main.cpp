@@ -24,11 +24,50 @@ double neptune_x = 1800;
 double neptune_y = 0;
 double sun_r = 250;
 int sr = 1;
+bool stop = false;
 
 double zx[200];
 double zy[200];
 
 void timer(int);
+
+void resetPlanetPositions() {
+    mercury_x = 400;
+    mercury_y = 0;
+    venus_x = 600;
+    venus_y = 0;
+    earth_x = 800;
+    earth_y = 0;
+    mars_x = 1000;
+    mars_y = 0;
+    jupiter_x = 1200;
+    jupiter_y = 0;
+    saturn_x = 1400;
+    saturn_y = 0;
+    uranus_x = 1600;
+    uranus_y = 0;
+    neptune_x = 1800;
+    neptune_y = 0;
+    n = 0;
+    u = 0;
+    s = 0;
+    j = 0;
+    mr = 0;
+    e = 0;
+    v = 0;
+    m = 0;
+}
+
+void keyboard(unsigned char c, int x, int y) {
+    if (c == 27) exit(0);
+    if (c == 's' || c == 'S') {
+        stop = !stop;
+        if (!stop) {
+            timer(0);  // Start the timer immediately
+        }
+    };
+    if (c == 'r' || c == 'R') resetPlanetPositions();
+}
 
 void drawStars() {
     // Draw 200 random stars
@@ -41,7 +80,7 @@ void drawStars() {
     }
 }
 
-void drawOrbits(){
+void drawOrbits() {
     //draw orbits
     r = 1800;
     for (int j = 0; j < 8; j++) {
@@ -62,7 +101,7 @@ void drawCelestialBodies() {
 
     //sun halo
     glBegin(GL_POLYGON);
-    glColor3ub(255, 255, 150);
+    glColor3ub(255, 235, 150);
     for (int i = 0; i <= 360; i++) {
         theta = i * 3.142 / 180;
         glVertex2f(sun_r * cos(theta), sun_r * sin(theta));
@@ -209,12 +248,11 @@ void init() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-1900, 1900, -1900, 1900);
-
 }
 
 
 int main(int argc, char **argv) {
-    for(int i = 0; i < 200; i++){
+    for (int i = 0; i < 200; i++) {
         zx[i] = rand() % 3800 - 1900;
         zy[i] = rand() % 3800 - 1900;
     }
@@ -226,19 +264,23 @@ int main(int argc, char **argv) {
     init();
     glutDisplayFunc(display);
     glutTimerFunc(1000, timer, 0);
+    glutKeyboardFunc(keyboard);
     glutMainLoop();
     return 0;
 }
 
 void timer(int) {
     glutPostRedisplay();
-    glutTimerFunc(1000 / 60, timer, 0);
+
+    if (!stop) {
+        glutTimerFunc(1000 / 60, timer, 0);
+    }
 
     sun_r += sr;
-    if (sun_r == 250){
+    if (sun_r == 250) {
         sr = 1;
     }
-    if(sun_r == 300){
+    if (sun_r == 300) {
         sr = -1;
     }
     if (n < 360) {
@@ -317,5 +359,4 @@ void timer(int) {
     e += (1 * 2);
     v += (1.62 * 2);
     m += (4.16 * 2);
-
 }
