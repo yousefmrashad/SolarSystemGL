@@ -8,7 +8,7 @@ Build and run in linux ubuntu
 
 build
 ```
-g++ chess.cpp -o sul -lGL -lGLU -lglut
+g++ main.cpp -o sul -lGL -lGLU -lglut
 ```
 run 
 ```
