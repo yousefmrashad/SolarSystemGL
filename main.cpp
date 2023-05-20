@@ -191,8 +191,11 @@ void drawCelestialBodies()
         theta = i * 3.142 / 180;
         glVertex2f(80 * cos(theta) + earth_x, 80 * sin(theta) + earth_y);
     }
+
     // Complete polygon with two points inside Earth
-    // Negatives indicate the landmass is in the third quarter
+    //Coordinates of the two vertices are indicated with respect to Earth's center
+
+    // Negatives indicate the vertices are situated in the third quarter
     glVertex2f(-40 + earth_x, -10 + earth_y);
     glVertex2f(-20 + earth_x, -20 + earth_y);
     glEnd();
@@ -204,7 +207,7 @@ void drawCelestialBodies()
         theta = i * 3.142 / 180;
         glVertex2f(80 * cos(theta) + earth_x, 80 * sin(theta) + earth_y);
     }
-    // Only negative y indicate the landmass is in the fourth quarter
+    // Only negative y indicates the vertices are situated in the fourth quarter
     glVertex2f(40 + earth_x, -10 + earth_y);
     glVertex2f(20 + earth_x, -20 + earth_y);
     glEnd();
